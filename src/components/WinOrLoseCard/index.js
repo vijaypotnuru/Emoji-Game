@@ -1,34 +1,30 @@
 import './index.css'
 
+const LOSE_IMAGE = 'https://assets.ccbp.in/frontend/react-js/lose-game-img.png'
+const WON_IMAGE = 'https://assets.ccbp.in/frontend/react-js/won-game-img.png'
+
 const WinOrLoseCard = props => {
-  const {winOrLose, score, playAgain} = props
+  const {isWon, onClickPlayAgain, score} = props
+  const imageUrl = isWon ? WON_IMAGE : LOSE_IMAGE
+  const gameStatus = isWon ? 'You Won' : 'You Lose'
+  const scoreLabel = isWon ? 'Best Score' : 'Score'
 
-  const onPlayAgain = () => {
-    playAgain()
-  }
-
-  const imgUrl = winOrLose
-    ? 'https://assets.ccbp.in/frontend/react-js/won-game-img.png'
-    : 'https://assets.ccbp.in/frontend/react-js/lose-game-img.png'
-
-  const resultText = winOrLose ? 'You Won' : 'You Lose'
-  const scoreText = winOrLose ? 'Best Score' : 'Score'
-
-  const scores = winOrLose ? `12/12` : `${score}/12`
   return (
-    <div className="winOrLose-card-container">
-      <img className="win-or-lose-image" src={imgUrl} alt="win or lose" />
-      <div className="result-container">
-        <h1 className="result-heading">{resultText}</h1>
-        <p className="score-text">{scoreText}</p>
-        <p className="scores">{scores}</p>
+    <div className="win-or-lose-card">
+      <div className="details-section">
+        <h1 className="game-status">{gameStatus}</h1>
+        <p className="current-score-label">{scoreLabel}</p>
+        <p className="current-score-value">{score}/12</p>
         <button
           type="button"
           className="play-again-button"
-          onClick={onPlayAgain}
+          onClick={onClickPlayAgain}
         >
           Play Again
         </button>
+      </div>
+      <div className="image-section">
+        <img className="win-or-lose-image" src={imageUrl} alt="win or lose" />
       </div>
     </div>
   )

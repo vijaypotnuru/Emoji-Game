@@ -1,19 +1,27 @@
 .app-container {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  background-image: linear-gradient(#9796f0, #fbc7d4);
+  flex-direction: column;
+  background-image: linear-gradient(
+    to bottom right,
+    #9796f0 0.5%,
+    #fbc7d4 150%
+  );
   min-height: 100vh;
 }
 
-.emojis-card-container {
-  list-style-type: none;
-  padding-left: 0px;
+.emoji-game-body {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
-  width: 90%;
-  height: 75%;
-  margin-top: 100px;
+  flex: 1;
+}
+
+.emojis-list-container {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  width: 80%;
+  margin: auto;
+  padding: 0px;
+  max-width: 1000px;
 }
